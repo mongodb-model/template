@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/mongodb-model/template#readme",
   "dependencies": {
-    "@mongodb-model/app": "^0.0.100010",
     "@mongodb-model/db-schema": "^0.0.0",
     "@mongodb-model/socket": "^0.0.10000",
     "dotenv": "16.0.3",
