@@ -1,0 +1,43 @@
+{
+  "name": "@mongodb-model/template",
+  "version": "0.0.0",
+  "description": "template",
+  "main": "index.js",
+  "bin": {
+    "template": "bin/index.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "vitest --globals"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mongodb-model/template.git"
+  },
+  "keywords": [
+    "template",
+    "stream",
+    "duplex",
+    "transform",
+    "eventEmitter"
+  ],
+  "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mongodb-model/template/issues"
+  },
+  "homepage": "https://github.com/mongodb-model/template#readme",
+  "dependencies": {
+    "@mongodb-model/app": "^0.0.100010",
+    "@mongodb-model/db-schema": "^0.0.0",
+    "@mongodb-model/socket": "^0.0.10000",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "ioredis": "5.2.4",
+    "mongodb": "4.11.0",
+    "socket.io-redis": "6.1.1",
+    "vitest": "0.25.1"
+  }
+}
