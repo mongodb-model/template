@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/mongodb-model/template/issues"
   },
-  "homepage": "https://github.com/mongodb-model/template#readme"
+  "homepage": "https://github.com/mongodb-model/template#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }

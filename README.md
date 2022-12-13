@@ -1,11 +1,11 @@
-# Base
+# Template
 
- Standalone base module extending the NodeJs Transform API with few other functionalities added
+Man is the man page for the mongodb model. If you are not building a cli application, then you most likely do not need it. Man is a duplex stream, specifically a Transform stream with some functionalities added. Primarily, it uses full power of the NodeJs Transform Stream API. In other words, everything you can do with NodeJs Transform API you can do with cli! Cli is centrally very highly event driven. Its common use is by extension or by using object destruction to get the instance methods needed.
 
 ### Installation
 
 ```bash
-$ yarn add @mongodb-model/template 
+$ yarn add @mongodb-model/template
 
 ```
  or 
@@ -16,19 +16,23 @@ $ npm i @mongodb-model/template
 
 ```
 
-### Simple Usage Example
+### Simple Usage Examples
 
-```bash
- const Base = require('@mongodb-model/template');
- const base = new Base();
- base.apiGet();
- base.on('apiGet', data => console.log(data));
- base.on('apiGet-error', error => console.error(error));
+
+#### Making api request (http request)
+```javascript
+const CLI = require('@mongodb-model/template');
+const cli = new CLI();
+cli.apiGet(); //base.apiGet(your api endpoint)
+cli.on('apiGet', data => console.log(data));
+cli.on('apiGet-error', error => console.error(error));
  
 ```
-or 
-```bash
- class MyWonderfulClass extends require('@mongodb-model/template') {
+
+#### By extension
+
+```javascript
+class MyWonderfulClass extends require('@mongodb-model/template') {
 
     constructor(...arrayOfObjects) {
 
@@ -44,8 +48,128 @@ or
     this.autoinvoker(MyWonderfulClass);
     this.setMaxListeners(Infinity);
   }
- };
- 
+};
+
 ```
 
+#### Basic usage example
+```javascript
+
+
+const Template = require('@mongodb-model/template');
+
+const {model} = new Template
+
+const userModelTemplate = model({model: 'User', collection: 'users'});
+
+// The resulting userModelTemplate contains: 
+
+
+'use strict';
+/*
+|--------------------------------------------------------------------------------
+| User Model
+|--------------------------------------------------------------------------------
+|
+| User extends the base model (Model) class and thus has everything
+| the base model has including all the basic CRUD methods or operations.
+|
+|
+*/
+const Model = require('@mongodb-model/model');
+
+class User extends Model{
+
+    /*
+    |----------------------------------------------------------------------------------
+    |                                   constructor
+    |----------------------------------------------------------------------------------
+    |
+    | dbOptions: default database options: collection, database url, and database name.
+    | options: default model options: any other option  for the model.
+    |
+    |
+    */
+    constructor(dbOptions = {collection: 'users', url: 'mongodb://localhost:27017', db: 'app'},...options){
+   
+    /*
+    |-------------------------------------------------------------------------------------
+    |                                       super
+    |-------------------------------------------------------------------------------------
+    |
+    | dbOptions: default database options: collection, database url, and database name.
+    |
+    |
+    */
+
+    super(dbOptions);
+
+    /*
+    |--------------------------------------------------------------------------------------
+    | default database options: in case dbOptions is set but collection and url 
+    | keys on the dbOptions are not provided.
+    |--------------------------------------------------------------------------------------
+    |
+    */
+
+    if(!this['hasOwnProperty']['collection']) this.collection = 'users';
+    if(!this['hasOwnProperty']['url']) this.url = 'mongodb://localhost:27017';
+
+    /*
+    |---------------------------------------------------------------------------------------
+    |                                      model options
+    |---------------------------------------------------------------------------------------
+    | Any other optional options passed to the model.
+    |
+    */
+        options.forEach(option => {
+            if(Object.keys(option).length > 0){
+                Object.keys(option).forEach(key => {
+                    if(!this[key]) this[key] = option[key];
+                })
+            }
+        })
+    }
+
+    /*
+    |---------------------------------------------------------------------------------------
+    |                   Bellow, you may add properties and methods to your model. 
+    |---------------------------------------------------------------------------------------
+    |
+    */
+
+
+    /**
+     * @name sayHello
+     * @function
+     *
+     * @param {Object|String} toMyProject Project name or project object.
+     *
+     * @description says hello to my project
+     *
+     * @return does not return anything
+     *
+     */
+
+    async sayHello(toMyProject) {
+        console.log('Hello there', toMyProject, '! I understand you are the new wonderful chick in the neighborhood!');
+    }
+
+ }
+
+
+ /*
+ |-----------------------------------------------------------------------------------------------
+ |                                       exports model 
+ |-----------------------------------------------------------------------------------------------
+ |
+ */
+ module.exports = User;
+
+```
+
+#### Author's Info
+Website|NPM|Github|Gitlab|Blog|LinkedIn|Facebook|Twitter|Instagram|
+--- | --- | --- | --- | --- | --- | --- |--- |--- |
+[Website](https://www.ericsonsweah.com/dashboard)|[NPM](https://www.npmjs.com/org/mongodb-model)|[Github](https://github.com/ericsonweah)|[Gitlab](https://gitlab.com/ericsonweah)|[Blog](https://www.ericonsweah.dev)|[LinkedIn](https://www.linkedin.com/in/ericson-weah-b03600210)|[Facebook](https://www.facebook.com/Eric.S.Weah)|[Twitter](https://twitter.com/EricsonWeah1)|[Instagram](https://www.instagram.com/ericsonweah/)|
 

@@ -59,6 +59,13 @@ class Template extends require("./base") {
 
 module.exports = Template
 
+const {model} = new Template
+
+console.log(model({model: 'User', collection: 'users'}))
+
+
+
+
 
 
 
