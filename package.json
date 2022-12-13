@@ -10,7 +10,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "vitest --globals"
+    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -28,15 +28,5 @@
   "bugs": {
     "url": "https://github.com/mongodb-model/template/issues"
   },
-  "homepage": "https://github.com/mongodb-model/template#readme",
-  "dependencies": {
-    "@mongodb-model/db-schema": "^0.0.0",
-    "@mongodb-model/socket": "^0.0.10000",
-    "dotenv": "16.0.3",
-    "express": "4.18.2",
-    "ioredis": "5.2.4",
-    "mongodb": "4.11.0",
-    "socket.io-redis": "6.1.1",
-    "vitest": "0.25.1"
-  }
+  "homepage": "https://github.com/mongodb-model/template#readme"
 }
