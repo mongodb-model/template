@@ -52,9 +52,40 @@ class MyWonderfulClass extends require('@mongodb-model/template') {
 
 ```
 
-#### Basic usage example
-```javascript
+#### Schema template creation example: userSchemaTemplate
 
+```javascript
+const Template = require('@mongodb-model/template');
+
+const {schema} = new Template
+
+const userSchemaTemplate = schema({name: 'UserSchema', type: 'object'});
+
+// The resulting userSchemaTemplate contains: 
+
+'use strict';
+/*
+|--------------------------------------------------------------------------
+| UserSchema Schema
+|--------------------------------------------------------------------------
+|
+| Here we you may add more options (keys) to you schema.
+|
+|
+*/
+const Schema  = require('@mongodb-model/db-schema');
+
+const {makeSchema}  = new Schema;
+
+ module.exports = makeSchema("UserSchema",{
+
+  property: "string|min:2|max:10",
+
+ }, "object") ;
+
+```
+#### Model template creation example: userModelTemplate 
+```javascript
 
 const Template = require('@mongodb-model/template');
 
